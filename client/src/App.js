@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import Response from './Response';
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
       player1Server: '',
       player2Server: '',
       isLoading: false,
+      loaded : false,
       player1: {},
       player2: {}
     };
@@ -55,7 +57,7 @@ class App extends Component {
         this.setState({
           player1: player1api,
           player2: player2api,
-          isLoading: false,
+          loaded: true,
         });
       })
       .catch((err) => {
@@ -122,8 +124,11 @@ class App extends Component {
 
             <button onClick={this.click} class="btn btn-dark">Compare</button>
           ) :
+        
             (
-              <div></div>
+              this.state.loaded ? (
+                <Response player1={this.state.player1}player2={this.state.player2} />
+              ): (<div></div>)
 
             ) 
 
