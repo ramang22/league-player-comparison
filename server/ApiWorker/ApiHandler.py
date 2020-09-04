@@ -26,7 +26,7 @@ def getOnePlayerStats(watcher,playerName, playerServer):
     )
 
     my_matches = watcher.match.matchlist_by_account(playerServer, playerAccId,queue=[420])
-    for match in my_matches['matches'][:20]:
+    for match in my_matches['matches'][:1]:
         match_detail = watcher.match.by_id(playerServer, match['gameId'])
         participantId = 0
         response.match += 1
