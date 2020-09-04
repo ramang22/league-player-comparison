@@ -1,1 +1,1 @@
-apiKey = ""
+apiKey = "RGAPI-d18704a8-41e8-4056-a0cf-913f2599b9ee"

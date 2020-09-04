@@ -12,8 +12,8 @@ class App extends Component {
     this.state = {
       player1Input: '',
       player2Input: '',
-      player1Server: '',
-      player2Server: '',
+      player1Server: 'EUN1',
+      player2Server: 'EUW1',
       isLoading: false,
       loaded : false,
       player1: {},
@@ -48,7 +48,7 @@ class App extends Component {
 
     this.setState({ isLoading: true });
 
-    axios.get("http://127.0.0.1:5000/?player1=TwTv%20Drututt&server1=euw1&player2=ND%20Nivelenn&server2=eun1")
+    axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
       .then((response) => {
 
         const player1api = response.data['player1']
