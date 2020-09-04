@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
+
+  async getApiCall(url) {
+    try {
+      const response = await axios.get(url);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getMenuItems() {
+    let response = await this.getApiCall(apiUrl);
+    let imagesOfFood = this.parseImages(response['data']['images']);
+    this.setState({
+      loaded: true,
+      menu: response['data'],
+      images: imagesOfFood
+    });
+    return response['data'];
+  }
+
   render() {
     return (
       <div className="App">
