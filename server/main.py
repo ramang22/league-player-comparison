@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from ApiWorker import ApiHandler
 app = Flask(__name__)
 
 
@@ -10,4 +11,5 @@ def hello_world():
     playerTwo = request.args.get('player2')
     serverOne = request.args.get('server1')
     serverTwo = request.args.get('server2')
-    return playerOne+serverOne+playerTwo+serverTwo+"kapp"
+    response = ApiHandler.getStats(playerOne, serverOne, playerTwo, serverTwo)
+    return response
