@@ -47,9 +47,9 @@ class App extends Component {
   click() {
 
     this.setState({ isLoading: true });
-
-    axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
-      .then((response) => {
+    
+    //axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
+     axios.get("http://127.0.0.1:5000/?player1=SuppOrth&server1=EUN1&player2=isamashii%20podsem&server2=EUN1").then((response) => {
 
         const player1api = response.data['player1']
         const player2api = response.data['player2']
