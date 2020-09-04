@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import App from './App';
 import PlayerHeader from './PlayerHeader';
+import { PieChart } from 'react-minimal-pie-chart';
+
 class Response extends Component {
 
     constructor(props) {
