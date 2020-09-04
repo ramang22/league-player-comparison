@@ -103,6 +103,8 @@ def getOnePlayerStats(watcher,playerName, playerServer):
     return response.prepareResponse()
 
 def getStats(player1Name, server1, player2Name, server2):
+
+    api_key = "RGAPI-9a7c7c3b-f44a-40ed-8046-af3e22e27ad5"
     watcher = LolWatcher(apiKey.apiKey)
 
     playerOneStats = getOnePlayerStats(watcher,player1Name,server1)

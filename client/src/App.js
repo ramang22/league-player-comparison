@@ -5,6 +5,7 @@ import axios from 'axios';
 
 class App extends Component {
 
+
   constructor(props) {
     super(props);
     this.state = {
@@ -60,8 +61,8 @@ class App extends Component {
       .catch((err) => {
         console.log(err)
       });
-  }
 
+  }
   render() {
     return (
       <div className="App">
@@ -74,6 +75,7 @@ class App extends Component {
             <div class="col-sm-6">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
+
                   <select onChange={evt => this.handleServer1(evt)} class="btn btn-outline-info dropdown-toggle" required>
                     <option value="EUW1">EUW</option>
                     <option value="EUN1">EUNE</option>
@@ -89,11 +91,13 @@ class App extends Component {
                   </select>
                 </div>
                 <input value={this.state.player1Input} onChange={evt => this.updatePlayerOneInput(evt)} type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Summoner Name" required></input>
+
               </div>
             </div>
             <div class="col-sm-6">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
+
                   <select onChange={evt => this.handleServer2(evt)} class="btn btn-outline-info dropdown-toggle" required>
                     <option value="EUW1">EUW</option>
                     <option value="EUN1">EUNE</option>
@@ -125,6 +129,7 @@ class App extends Component {
 
             }
         </div>
+
       </div>
     );
   }
