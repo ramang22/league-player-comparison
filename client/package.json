@@ -9,6 +9,7 @@
     "@types/react-dom": "16.9.8",
     "axios": "^0.20.0",
     "react": "^16.13.1",
+    "react-bootstrap-range-slider": "^1.2.1",
     "react-dom": "^16.13.1",
     "react-minimal-pie-chart": "^8.0.1",
     "react-scripts": "0.9.5",
