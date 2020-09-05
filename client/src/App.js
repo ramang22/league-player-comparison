@@ -21,7 +21,7 @@ class App extends Component {
       loaded: false,
       player1: {},
       player2: {},
-      sliderValue: 20,
+      sliderValue: 1,
       soloqbox: true,
       flexbox: false
     };
@@ -54,36 +54,40 @@ class App extends Component {
 
   handleChange(event) {
     this.setState({ soloqbox: !this.state.soloqbox });
-    }
+  }
   handleChangeFlex(event) {
     this.setState({ flexbox: !this.state.flexbox });
-    }
+  }
   click() {
 
     this.setState({ isLoading: true });
 
- // axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
-   axios.get("http://127.0.0.1:5000/", {params :
-    {
-      player1: this.state.player1Input,
-      player2: this.state.player2Input,
-      server1: this.state.player1Server,
-      server2: this.state.player2Server,
-      numOfGames : this.state.sliderValue,
-      soloq : this.state.soloqbox,
-      flexq: this.state.flexbox,
-  }})
-  .then((response) => {
-
-      const player1api = response.data['player1']
-      const player2api = response.data['player2']
-      console.log(player2api)
-      this.setState({
-        player1: player1api,
-        player2: player2api,
-        loaded: true,
-      });
+    // axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
+    axios.get("http://127.0.0.1:5000/", {
+      params:
+      {
+        // player1: this.state.player1Input,
+        // player2: this.state.player2Input,
+        player1: "narrik",
+        player2: "lord Ramang",
+        server1: this.state.player1Server,
+        server2: this.state.player2Server,
+        numOfGames: this.state.sliderValue,
+        soloq: this.state.soloqbox,
+        flexq: this.state.flexbox,
+      }
     })
+      .then((response) => {
+
+        const player1api = response.data['player1']
+        const player2api = response.data['player2']
+        console.log(player2api)
+        this.setState({
+          player1: player1api,
+          player2: player2api,
+          loaded: true,
+        });
+      })
       .catch((err) => {
         console.log(err)
       });
@@ -168,7 +172,7 @@ class App extends Component {
                       value={this.state.flexbox}
                       onChange={this.handleChangeFlex}
                       checked={this.state.flexbox}
-                       />
+                    />
                     <label>FlexQ</label>
                   </div>
                 </div>

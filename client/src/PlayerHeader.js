@@ -11,15 +11,18 @@ class Response extends Component {
         this.state = {
             pieData:
                 [
-                    {
-                        title: 'Win',
-                        value: this.props.player1['wins'],
-                        color: '#E38627'
-                    },
+                    
                     {
                         title: 'Loose',
                         value: this.props.player1['losses'],
-                        color: '#C13C37'
+                        color: 'red',
+                        rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']) * 100) / 100 ,
+                    },
+                    {
+                        title: 'Win',
+                        value: this.props.player1['wins'],
+                        color: 'green',
+                        rate :  Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins']) * 100) / 100 ,
                     }
 
                 ],
@@ -51,7 +54,9 @@ class Response extends Component {
                     color: 'yellow'
                 },
 
-            ]
+            ],
+            winRate : 100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins'],
+            looseRate :100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']
         }
 
     }
@@ -106,12 +111,15 @@ class Response extends Component {
                     <span>K/D/A in {this.props.player1['matches']} {this.props.player1['kills']}/{this.props.player1['deaths']}/{this.props.player1['assists']}</span>
                 </div>
                 <div className="row">
+                    <span>KP%  {this.props.player1['kp']}</span>
+                </div>
+                <div className="row">
                    <span>Win/Loose</span>
                 </div>
                 <div className="row">
                     <PieChart
                         data={this.state.pieData}
-                        label={({ dataEntry }) => dataEntry.value}
+                        label={({ dataEntry }) => (dataEntry.rate)}
                         style={{
                             ...defaultStyle,
                           }}
