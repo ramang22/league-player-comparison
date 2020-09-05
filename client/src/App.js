@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       player1Input: '',
       player2Input: '',
-      player1Server: 'EUN1',
+      player1Server: 'EUW1',
       player2Server: 'EUW1',
       isLoading: false,
       loaded: false,
@@ -62,8 +62,8 @@ class App extends Component {
 
     this.setState({ isLoading: true });
 
-    //axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
-    axios.get("http://127.0.0.1:5000/?player1=SuppOrth&server1=EUN1&player2=isamashii%20podsem&server2=EUN1",
+ // axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
+   axios.get("http://127.0.0.1:5000/", {params :
     {
       player1: this.state.player1Input,
       player2: this.state.player2Input,
@@ -72,7 +72,8 @@ class App extends Component {
       numOfGames : this.state.sliderValue,
       soloq : this.state.soloqbox,
       flexq: this.state.flexbox,
-  }).then((response) => {
+  }})
+  .then((response) => {
 
       const player1api = response.data['player1']
       const player2api = response.data['player2']

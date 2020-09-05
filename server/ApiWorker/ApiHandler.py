@@ -3,7 +3,7 @@ import json
 from .Player import Player
 from LolApiConstants import apiKey
 
-def getOnePlayerStats(watcher,playerName, playerServer):
+def getOnePlayerStats(watcher,playerName, playerServer,flexq, soloq, num):
     player = watcher.summoner.by_name(playerServer, playerName)
     playerId = player['id']
     playerAccId = player['accountId']
@@ -26,7 +26,7 @@ def getOnePlayerStats(watcher,playerName, playerServer):
     )
 
     my_matches = watcher.match.matchlist_by_account(playerServer, playerAccId,queue=[420])
-    for match in my_matches['matches'][:1]:
+    for match in my_matches['matches'][:int(num)]:
         match_detail = watcher.match.by_id(playerServer, match['gameId'])
         participantId = 0
         response.match += 1
@@ -102,13 +102,12 @@ def getOnePlayerStats(watcher,playerName, playerServer):
 
     return response.prepareResponse()
 
-def getStats(player1Name, server1, player2Name, server2):
+def getStats(player1Name, server1, player2Name, server2, flexq, soloq, num):
 
-    api_key = "RGAPI-9a7c7c3b-f44a-40ed-8046-af3e22e27ad5"
     watcher = LolWatcher(apiKey.apiKey)
 
-    playerOneStats = getOnePlayerStats(watcher,player1Name,server1)
-    playerTwoStats = getOnePlayerStats(watcher,player2Name,server2)
+    playerOneStats = getOnePlayerStats(watcher,player1Name,server1,flexq, soloq, num)
+    playerTwoStats = getOnePlayerStats(watcher,player2Name,server2,flexq, soloq, num)
     response = {
         "player1" : playerOneStats,
         "player2" : playerTwoStats

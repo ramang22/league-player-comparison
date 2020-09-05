@@ -14,5 +14,9 @@ def hello_world():
     playerTwo = request.args.get('player2')
     serverOne = request.args.get('server1')
     serverTwo = request.args.get('server2')
-    response = ApiHandler.getStats(playerOne, serverOne, playerTwo, serverTwo)
+    flexq = request.args.get('flexq')
+    soloq = request.args.get('soloq')
+    num = request.args.get('numOfGames')
+    print(num)
+    response = ApiHandler.getStats(playerOne, serverOne, playerTwo, serverTwo, flexq, soloq, num)
     return response
