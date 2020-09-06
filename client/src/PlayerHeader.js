@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import App from './App';
 import { PieChart } from 'react-minimal-pie-chart';
-
+import BarChart from 'react-bar-chart';
+const margin = {top: 20, right: 20, bottom: 30, left: 40};
 class Response extends Component {
 
     constructor(props) {
@@ -11,52 +12,52 @@ class Response extends Component {
         this.state = {
             pieData:
                 [
-                    
+
                     {
                         title: 'Loose',
                         value: this.props.player1['losses'],
                         color: 'red',
-                        rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']) * 100) / 100 ,
+                        rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']) * 100) / 100,
                     },
                     {
                         title: 'Win',
                         value: this.props.player1['wins'],
                         color: 'green',
-                        rate :  Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins']) * 100) / 100 ,
+                        rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins']) * 100) / 100,
                     }
 
                 ],
             roleData:
-            [
-                {
-                    title: 'jungle',
-                    value: this.props.player1['jungle'],
-                    color: 'green'
-                },
-                {
-                    title: 'top',
-                    value: this.props.player1['top'],
-                    color: 'black'
-                },
-                {
-                    title: 'mid',
-                    value: this.props.player1['mid'],
-                    color: 'blue'
-                },
-                {
-                    title: 'adc',
-                    value: this.props.player1['adc'],
-                    color: 'red'
-                },
-                {
-                    title: 'supp',
-                    value: this.props.player1['supp'],
-                    color: 'yellow'
-                },
+                [
+                    {
+                        text: 'jungle',
+                        value: this.props.player1['jungle'],
+  //                      color: 'green'
+                    },
+                    {
+                        text: 'top',
+                        value: this.props.player1['top'],
+//                        color: 'black'
+                    },
+                    {
+                        text: 'mid',
+                        value: this.props.player1['mid'],
+    //                    color: 'blue'
+                    },
+                    {
+                        text: 'adc',
+                        value: this.props.player1['adc'],
+      //                  color: 'red'
+                    },
+                    {
+                        text: 'supp',
+                        value: this.props.player1['supp'],
+        //                color: 'yellow'
+                    },
 
-            ],
-            winRate : 100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins'],
-            looseRate :100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']
+                ],
+            winRate: 100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins'],
+            looseRate: 100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']
         }
 
     }
@@ -84,17 +85,17 @@ class Response extends Component {
     render() {
         const mystyle = {
             "maxHeight": 100,
-             "maxWidth": 100
-          };
-          const defaultStyle = {
+            "maxWidth": 100
+        };
+        const defaultStyle = {
 
             "maxHeight": 200,
-             "maxWidth": 200
-          };
-          const defaultLabelStyle = {
+            "maxWidth": 200
+        };
+        const defaultLabelStyle = {
             fontSize: '12px',
             fontFamily: 'sans-serif',
-          };
+        };
         return (
             <div className="container">
 
@@ -114,7 +115,7 @@ class Response extends Component {
                     <span>KP%  {this.props.player1['kp']}</span>
                 </div>
                 <div className="row">
-                   <span>Win/Loose</span>
+                    <span>Win/Loose</span>
                 </div>
                 <div className="row">
                     <PieChart
@@ -122,10 +123,10 @@ class Response extends Component {
                         label={({ dataEntry }) => (dataEntry.rate)}
                         style={{
                             ...defaultStyle,
-                          }}
-                          labelStyle={{
+                        }}
+                        labelStyle={{
                             ...defaultLabelStyle,
-                          }}
+                        }}
                     />;
                 </div>
 
@@ -133,19 +134,17 @@ class Response extends Component {
                     <span>Winrate {100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins']}</span>
                 </div>
                 <div className="row">
-                   <span>Role selection</span>
+                    <span>Role selection</span>
                 </div>
                 <div className="row">
-                    <PieChart
+                    <BarChart ylabel='Number of games'
+                    xlabel='Roles'
+                       width={250}
+                       height={300}
+                       margin={margin}
                         data={this.state.roleData}
-                        label={({ dataEntry }) => dataEntry.value}
-                        style={{
-                            ...defaultStyle,
-                          }}
-                          labelStyle={{
-                            ...defaultLabelStyle,
-                          }}
-                    />;
+                        //onBarClick={this.handleBarClick}
+                         />
                 </div>
             </div>
 

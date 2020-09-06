@@ -72,7 +72,8 @@ class App extends Component {
         player2: "lord Ramang",
         server1: this.state.player1Server,
         server2: this.state.player2Server,
-        numOfGames: this.state.sliderValue,
+       // numOfGames: this.state.sliderValue,
+       numOfGames : 20,
         soloq: this.state.soloqbox,
         flexq: this.state.flexbox,
       }
