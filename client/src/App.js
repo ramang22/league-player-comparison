@@ -66,14 +66,14 @@ class App extends Component {
     axios.get("http://127.0.0.1:5000/", {
       params:
       {
-        // player1: this.state.player1Input,
-        // player2: this.state.player2Input,
-        player1: "narrik",
-        player2: "lord Ramang",
+        player1: this.state.player1Input,
+        player2: this.state.player2Input,
+        // player1: "narrik",
+        // player2: "lord Ramang",
         server1: this.state.player1Server,
         server2: this.state.player2Server,
-       // numOfGames: this.state.sliderValue,
-       numOfGames : 20,
+       numOfGames: this.state.sliderValue,
+       //numOfGames : 20,
         soloq: this.state.soloqbox,
         flexq: this.state.flexbox,
       }

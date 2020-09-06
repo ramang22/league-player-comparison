@@ -69,7 +69,10 @@ class responsePlayer:
         self.kills = Player.kills
         self.deaths = Player.deaths
         self.assists = Player.assists
-        self.kda = (Player.kills + Player.assists) / Player.deaths
+        if Player.deaths == 0:
+            self.kda = (Player.kills + Player.assists)
+        else:  
+            self.kda = (Player.kills + Player.assists) / Player.deaths
         self.match = Player.match
         self.winnedMatch = Player.matchWin
         self.totalDamageDealtToChampions_perGame = Player.totalDamageDealtToChampions/Player.match
@@ -110,7 +113,7 @@ class responsePlayer:
         if Player.creep_games_20 != 0:
             self.farm_10_20 = Player.creepDiff_10_20 / Player.creep_games_20
         else:
-            self.farm_10_20 = Player.creepsDiff_10_20
+            self.farm_10_20 = Player.creepDiff_10_20
         
         if Player.creep_games_30 != 0:
             self.farm_20_30 = Player.creepDiff_20_30 / Player.creep_games_30

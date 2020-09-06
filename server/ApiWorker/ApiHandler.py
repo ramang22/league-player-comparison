@@ -3,7 +3,7 @@ import json
 from .Player import Player
 from LolApiConstants import apiKey
 
-def getOnePlayerStats(watcher,playerName, playerServer,flexq, soloq, num):
+def getOnePlayerStats(watcher,playerName, playerServer,queueType, num):
     player = watcher.summoner.by_name(playerServer, playerName)
     playerId = player['id']
     playerAccId = player['accountId']
@@ -25,7 +25,7 @@ def getOnePlayerStats(watcher,playerName, playerServer,flexq, soloq, num):
         soloqStats['leaguePoints'],    
     )
 
-    my_matches = watcher.match.matchlist_by_account(playerServer, playerAccId,queue=[420])
+    my_matches = watcher.match.matchlist_by_account(playerServer, playerAccId,queue=queueType)
     for match in my_matches['matches'][:int(num)]:
         match_detail = watcher.match.by_id(playerServer, match['gameId'])
         participantId = 0
@@ -105,9 +105,14 @@ def getOnePlayerStats(watcher,playerName, playerServer,flexq, soloq, num):
 def getStats(player1Name, server1, player2Name, server2, flexq, soloq, num):
 
     watcher = LolWatcher(apiKey.apiKey)
-
-    playerOneStats = getOnePlayerStats(watcher,player1Name,server1,flexq, soloq, num)
-    playerTwoStats = getOnePlayerStats(watcher,player2Name,server2,flexq, soloq, num)
+    if soloq and flexq:
+        queueType = [420,470]
+    elif soloq:
+        queueType = [420]
+    elif flexq:
+        queueType = [470]
+    playerOneStats = getOnePlayerStats(watcher,player1Name,server1, queueType, num)
+    playerTwoStats = getOnePlayerStats(watcher,player2Name,server2,queueType, num)
     response = {
         "player1" : playerOneStats,
         "player2" : playerTwoStats
