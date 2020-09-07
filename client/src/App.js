@@ -3,8 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import Response from './Response';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+import RangeSlider from 'react-bootstrap-range-slider';
 
 class App extends Component {
+
 
 
   constructor(props) {
@@ -12,14 +15,19 @@ class App extends Component {
     this.state = {
       player1Input: '',
       player2Input: '',
-      player1Server: 'EUN1',
+      player1Server: 'EUW1',
       player2Server: 'EUW1',
       isLoading: false,
-      loaded : false,
+      loaded: false,
       player1: {},
-      player2: {}
+      player2: {},
+      sliderValue: 1,
+      soloqbox: true,
+      flexbox: false
     };
     this.click = this.click.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeFlex = this.handleChangeFlex.bind(this);
   }
 
   updatePlayerOneInput(evt) {
@@ -44,11 +52,32 @@ class App extends Component {
     })
   }
 
+  handleChange(event) {
+    this.setState({ soloqbox: !this.state.soloqbox });
+  }
+  handleChangeFlex(event) {
+    this.setState({ flexbox: !this.state.flexbox });
+  }
   click() {
 
     this.setState({ isLoading: true });
 
-    axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
+    // axios.get("http://127.0.0.1:5000/?player1="+this.state.player1Input+"&server1="+this.state.player1Server+"&player2="+this.state.player2Input+"&server2="+this.state.player2Server)
+    axios.get("http://127.0.0.1:5000/", {
+      params:
+      {
+        player1: this.state.player1Input,
+        player2: this.state.player2Input,
+        // player1: "narrik",
+        // player2: "lord Ramang",
+        server1: this.state.player1Server,
+        server2: this.state.player2Server,
+       numOfGames: this.state.sliderValue,
+       //numOfGames : 20,
+        soloq: this.state.soloqbox,
+        flexq: this.state.flexbox,
+      }
+    })
       .then((response) => {
 
         const player1api = response.data['player1']
@@ -120,19 +149,48 @@ class App extends Component {
           </div>
         </form>
         <div>
-          {this.state.isLoading==false ? (
+          {this.state.isLoading == false ? (
+            <div>
+              <div class="col-sm-2">
+                <span>Number of fetch games</span>
+                <RangeSlider
+                  value={this.state.sliderValue}
+                  onChange={changeEvent => this.setState({ sliderValue: changeEvent.target.value })}
+                  variant="dark"
+                />
+                <div >
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      value={this.state.soloqbox}
+                      onChange={this.handleChange}
+                      checked={this.state.soloqbox} />
+                    <label>SoloQ</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      value={this.state.flexbox}
+                      onChange={this.handleChangeFlex}
+                      checked={this.state.flexbox}
+                    />
+                    <label>FlexQ</label>
+                  </div>
+                </div>
+              </div>
+              <button onClick={this.click} class="btn btn-dark">Compare</button>
+            </div>
 
-            <button onClick={this.click} class="btn btn-dark">Compare</button>
           ) :
-        
+
             (
               this.state.loaded ? (
-                <Response player1={this.state.player1}player2={this.state.player2} />
-              ): (<div></div>)
+                <Response player1={this.state.player1} player2={this.state.player2} />
+              ) : (<div></div>)
 
-            ) 
+            )
 
-            }
+          }
         </div>
 
       </div>
