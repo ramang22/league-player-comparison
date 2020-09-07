@@ -4,6 +4,7 @@ import './App.css';
 import App from './App';
 import { PieChart } from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
+import { ResponsiveRadar } from '@nivo/radar'
 const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 class Response extends Component {
 
@@ -30,28 +31,26 @@ class Response extends Component {
             roleData:
                 [
                     {
-                        text: 'jungle',
-                        value: this.props.player1['jungle'],
-                        //                      color: 'green'
+                        "role": "jungle",
+                        "player": this.props.player1['jungle']
                     },
                     {
-                        text: 'top',
-                        value: this.props.player1['top'],
-                        //                        color: 'black'
+                        "role": "top",
+                        "player": this.props.player1['top']
                     },
                     {
-                        text: 'mid',
-                        value: this.props.player1['mid'],
+                        "role": "mid",
+                        "player": this.props.player1['mid']
                         //                    color: 'blue'
                     },
                     {
-                        text: 'adc',
-                        value: this.props.player1['adc'],
+                        "role": "adc",
+                        "player": this.props.player1['adc']
                         //                  color: 'red'
                     },
                     {
-                        text: 'supp',
-                        value: this.props.player1['supp'],
+                        "role": "supp",
+                        "player": this.props.player1['supp']
                         //                color: 'yellow'
                     },
 
@@ -59,7 +58,6 @@ class Response extends Component {
             winRate: 100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins'],
             looseRate: 100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']
         }
-
     }
 
     getIcon() {
@@ -92,6 +90,10 @@ class Response extends Component {
             "maxHeight": 200,
             "maxWidth": 200
         };
+        const chartStyle = {
+            "height": 170,
+            "width": 170
+        };
         const defaultLabelStyle = {
             fontSize: '12px',
             fontFamily: 'sans-serif',
@@ -99,7 +101,7 @@ class Response extends Component {
         return (
             <div className="container">
 
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-black bg-light mb-3">
                     <div class="row no-gutters">
                         <div class="col-auto shadow">
                             <img src={this.getIcon()} class="img-fluid" style={mystyle} />
@@ -109,14 +111,14 @@ class Response extends Component {
                                 <h4 class="card-title">{this.props.player1['name']}</h4>
                                 <p class="card-text">KDA: {this.props.player1['kda']}</p>
                                 <p class="card-text">Games: {this.props.player1['match']}</p>
-                        <p class="card-text">K/D/A: {this.props.player1['kills']}/{this.props.player1['deaths']}/{this.props.player1['assists']}</p>
-                        <p class="card-text">KP%:  {this.props.player1['kp']}</p>
+                                <p class="card-text">K/D/A: {this.props.player1['kills']}/{this.props.player1['deaths']}/{this.props.player1['assists']}</p>
+                                <p class="card-text">KP%:  {this.props.player1['kp']}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row">
-                    <span>Win/Loose</span>
+                    <span>Win/Loss</span>
                 </div>
                 <div className="row">
                     <PieChart
@@ -137,15 +139,64 @@ class Response extends Component {
                 <div className="row">
                     <span>Role selection</span>
                 </div>
-                <div className="row">
-                    <BarChart ylabel='Number of games'
+                <div className="row" style={{ width: "200px", height: "200px" }}>
+                    {/* <BarChart ylabel='Number of games'
                         xlabel='Roles'
                         width={250}
                         height={300}
                         margin={margin}
                         data={this.state.roleData}
+                        strokeColor="#E7F6E7"
+                        highlightFill="#8ADABF"
+                        highlightStroke="#E87137"
                     //onBarClick={this.handleBarClick}
-                    />
+                    /> */
+
+                        <ResponsiveRadar
+                            width={250}
+                            height={250}
+                            data={this.state.roleData}
+                            keys={["player"]}
+                            indexBy="role"
+                            maxValue="auto"
+                            margin={{ top: 40, right: 0, bottom: 54, left: 0 }}
+                            curve="catmullRomClosed"
+                            borderWidth={4}
+                            borderColor="white"
+                            gridLevels={4}
+                            gridShape="circular"
+                            gridLabelOffset={24}
+                            enableDots={true}
+                            dotSize={6}
+                            dotColor="#E87137"
+                            dotBorderWidth={1}
+                            dotBorderColor="white"
+                            enableDotLabel={true}
+                            dotLabel="value"
+                            dotLabelYOffset={18}
+                            colors={["#E87137"]}
+                            fillOpacity={0.8}
+                            blendMode="multiply"
+                            animate={true}
+                            motionStiffness={90}
+                            motionDamping={15}
+                            isInteractive={true}
+                            theme={{
+                                dots: {
+                                    text: {
+                                        fill: "#8ADABF"
+                                    }
+                                },
+                                axis: {
+                                    ticks: {
+                                        text: {
+                                            fill: '#8ADABF'
+                                        }
+                                    },
+                                }
+                            }}
+                        />
+                    }
                 </div>
             </div>
 
