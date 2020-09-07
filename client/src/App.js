@@ -5,6 +5,7 @@ import axios from 'axios';
 import Response from './Response';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
+import ReactLoading from 'react-loading';
 
 class App extends Component {
 
@@ -72,10 +73,11 @@ class App extends Component {
         // player2: "lord Ramang",
         server1: this.state.player1Server,
         server2: this.state.player2Server,
-       numOfGames: this.state.sliderValue,
-       //numOfGames : 20,
+        numOfGames: this.state.sliderValue,
+        //numOfGames : 20,
         soloq: this.state.soloqbox,
         flexq: this.state.flexbox,
+
       }
     })
       .then((response) => {
@@ -87,10 +89,14 @@ class App extends Component {
           player1: player1api,
           player2: player2api,
           loaded: true,
+          isLoading: false
         });
       })
       .catch((err) => {
         console.log(err)
+        this.setState({
+          isLoading : false
+        })
       });
 
   }
@@ -179,17 +185,29 @@ class App extends Component {
                 </div>
               </div>
               <button onClick={this.click} class="btn btn-info">Compare</button>
+              {
+                this.state.loaded ? (
+                  <Response player1={this.state.player1} player2={this.state.player2} />
+                ) : (<div></div>)
+
+              }
             </div>
 
           ) :
 
             (
-              this.state.loaded ? (
-                <Response player1={this.state.player1} player2={this.state.player2} />
-              ) : (<div></div>)
-
+              <div class="col-sm-6">
+                <div class="row">
+                  <span class="text-info m-2">Searching for players</span>
+                </div>
+                <div class="row">
+                  <ReactLoading type="cubes" color="white" />
+                </div>
+                <div class="row">
+                  <span class="text-info m-2">Looking up {this.state.player1Input} and {this.state.player2Input}</span>
+                </div>
+              </div>
             )
-
           }
         </div>
 
