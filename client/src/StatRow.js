@@ -16,7 +16,7 @@ class StatRow extends Component {
 
     render() {
         return (
-                <div className="row">
+                <div className="row text-white">
                     <div className="col-sm-6">
                         {this.props.name}
                     </div>
