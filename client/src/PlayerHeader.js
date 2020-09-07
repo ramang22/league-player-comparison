@@ -4,7 +4,7 @@ import './App.css';
 import App from './App';
 import { PieChart } from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
-const margin = {top: 20, right: 20, bottom: 30, left: 40};
+const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 class Response extends Component {
 
     constructor(props) {
@@ -16,13 +16,13 @@ class Response extends Component {
                     {
                         title: 'Loose',
                         value: this.props.player1['losses'],
-                        color: 'red',
+                        color: '#A7151E',
                         rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']) * 100) / 100,
                     },
                     {
                         title: 'Win',
                         value: this.props.player1['wins'],
-                        color: 'green',
+                        color: '#A0C4BD',
                         rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins']) * 100) / 100,
                     }
 
@@ -32,27 +32,27 @@ class Response extends Component {
                     {
                         text: 'jungle',
                         value: this.props.player1['jungle'],
-  //                      color: 'green'
+                        //                      color: 'green'
                     },
                     {
                         text: 'top',
                         value: this.props.player1['top'],
-//                        color: 'black'
+                        //                        color: 'black'
                     },
                     {
                         text: 'mid',
                         value: this.props.player1['mid'],
-    //                    color: 'blue'
+                        //                    color: 'blue'
                     },
                     {
                         text: 'adc',
                         value: this.props.player1['adc'],
-      //                  color: 'red'
+                        //                  color: 'red'
                     },
                     {
                         text: 'supp',
                         value: this.props.player1['supp'],
-        //                color: 'yellow'
+                        //                color: 'yellow'
                     },
 
                 ],
@@ -84,8 +84,8 @@ class Response extends Component {
     }
     render() {
         const mystyle = {
-            "maxHeight": 100,
-            "maxWidth": 100
+            "maxHeight": 170,
+            "maxWidth": 170
         };
         const defaultStyle = {
 
@@ -99,20 +99,21 @@ class Response extends Component {
         return (
             <div className="container">
 
-                <div className="row">
-                    <img style={mystyle} class="img-thumbnail" class="rounded mx-auto d-block" src={this.getIcon()} />
-                </div>
-                <div className="row">
-                    <span>{this.props.player1['name']}</span>
-                </div>
-                <div className="row">
-                    <span>KDA {this.props.player1['kda']}</span>
-                </div>
-                <div className="row">
-                    <span>K/D/A in {this.props.player1['matches']} {this.props.player1['kills']}/{this.props.player1['deaths']}/{this.props.player1['assists']}</span>
-                </div>
-                <div className="row">
-                    <span>KP%  {this.props.player1['kp']}</span>
+                <div class="card text-white bg-dark mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-auto shadow">
+                            <img src={this.getIcon()} class="img-fluid" style={mystyle} />
+                        </div>
+                        <div class="col">
+                            <div class="card-block px-2">
+                                <h4 class="card-title">{this.props.player1['name']}</h4>
+                                <p class="card-text">KDA: {this.props.player1['kda']}</p>
+                                <p class="card-text">Games: {this.props.player1['match']}</p>
+                        <p class="card-text">K/D/A: {this.props.player1['kills']}/{this.props.player1['deaths']}/{this.props.player1['assists']}</p>
+                        <p class="card-text">KP%:  {this.props.player1['kp']}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="row">
                     <span>Win/Loose</span>
@@ -138,13 +139,13 @@ class Response extends Component {
                 </div>
                 <div className="row">
                     <BarChart ylabel='Number of games'
-                    xlabel='Roles'
-                       width={250}
-                       height={300}
-                       margin={margin}
+                        xlabel='Roles'
+                        width={250}
+                        height={300}
+                        margin={margin}
                         data={this.state.roleData}
-                        //onBarClick={this.handleBarClick}
-                         />
+                    //onBarClick={this.handleBarClick}
+                    />
                 </div>
             </div>
 
