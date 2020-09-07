@@ -152,11 +152,11 @@ class App extends Component {
           {this.state.isLoading == false ? (
             <div>
               <div class="col-sm-2">
-                <span>Number of fetch games</span>
+                <span class="text-info"> Number of fetch games</span>
                 <RangeSlider
                   value={this.state.sliderValue}
                   onChange={changeEvent => this.setState({ sliderValue: changeEvent.target.value })}
-                  variant="dark"
+                  variant="info"
                 />
                 <div >
                   <div class="custom-control custom-checkbox">
@@ -165,7 +165,7 @@ class App extends Component {
                       value={this.state.soloqbox}
                       onChange={this.handleChange}
                       checked={this.state.soloqbox} />
-                    <label>SoloQ</label>
+                    <label class="text-info m-2">SoloQ</label>
                   </div>
                   <div class="custom-control custom-checkbox">
                     <input
@@ -174,11 +174,11 @@ class App extends Component {
                       onChange={this.handleChangeFlex}
                       checked={this.state.flexbox}
                     />
-                    <label>FlexQ</label>
+                    <label class="text-info m-2">FlexQ</label>
                   </div>
                 </div>
               </div>
-              <button onClick={this.click} class="btn btn-dark">Compare</button>
+              <button onClick={this.click} class="btn btn-info">Compare</button>
             </div>
 
           ) :
