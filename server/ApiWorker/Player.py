@@ -96,7 +96,7 @@ class responsePlayer:
         self.damageDealtToTurrets_perGame =  round(Player.damageDealtToTurrets / Player.match,2)
         self.damageDealtToObjectives_perGame =  round(Player.damageDealtToObjectives / Player.match,2)
         self.avgLv =  round(Player.champLevel / Player.match,2)
-        self.avgGameTime =  round(Player.timespent / Player.match,2)
+        self.avgGameTime =  round((Player.timespent / Player.match)/60,2)
         self.cc_perGame =  round(Player.timeCCingOthers / Player.match,2)
         self.totalDamageTaken_perGame =  round(Player.totalDamageTaken / Player.match,2)
         self.totalDamageTaken_perMinute = round( Player.totalDamageTaken / Player.timespent,2)
