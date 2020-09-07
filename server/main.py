@@ -17,6 +17,5 @@ def hello_world():
     flexq = request.args.get('flexq')
     soloq = request.args.get('soloq')
     num = request.args.get('numOfGames')
-    print(num)
     response = ApiHandler.getStats(playerOne, serverOne, playerTwo, serverTwo, flexq, soloq, num)
     return response

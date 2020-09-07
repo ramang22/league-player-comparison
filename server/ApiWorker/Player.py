@@ -45,6 +45,11 @@ class Player:
         self.damageDealtToTurrets = 0
         self.damageDealtToObjectives = 0
         self.allKills = 0
+        self.goldSpent = 0
+        self.champLevel = 0
+        self.firstBlood = 0
+        self.timeCCingOthers = 0
+        self.totalDamageTaken = 0
     def toJSON(self):
         # return json.dumps(self, default=lambda o: o.__dict__, 
         #     sort_keys=False, indent=0)
@@ -69,6 +74,11 @@ class responsePlayer:
         self.kills = Player.kills
         self.deaths = Player.deaths
         self.assists = Player.assists
+        if Player.firstBlood == 0:
+            self.firstBloodKP = 0
+        else:    
+            self.firstBloodKP = Player.firstBlood / Player.match
+        self.dmgPerGold = Player.totalDamageDealtToChampions / Player.goldSpent
         if Player.deaths == 0:
             self.kda = (Player.kills + Player.assists)
         else:  
@@ -85,6 +95,11 @@ class responsePlayer:
         self.visionWardsBoughtInGame = Player.visionWardsBoughtInGame / Player.match
         self.damageDealtToTurrets_perGame = Player.damageDealtToTurrets / Player.match
         self.damageDealtToObjectives_perGame = Player.damageDealtToObjectives / Player.match
+        self.avgLv = Player.champLevel / Player.match
+        self.avgGameTime = Player.timespent / Player.match
+        self.cc_perGame = Player.timeCCingOthers / Player.match
+        self.totalDamageTaken_perGame = Player.totalDamageTaken / Player.match
+        self.totalDamageTaken_perMinute = Player.totalDamageTaken / Player.timespent
         if Player.games_10 != 0:
             self.csDiff_0_10 = Player.csDiff_0_10 / Player.games_10
         else:

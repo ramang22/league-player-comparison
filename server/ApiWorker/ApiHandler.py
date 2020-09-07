@@ -52,6 +52,12 @@ def getOnePlayerStats(watcher,playerName, playerServer,queueType, num):
                 response.damageDealtToObjectives  += stats['damageDealtToObjectives']
                 response.visionWardsBoughtInGame += stats['visionWardsBoughtInGame']
                 response.totalDamageDealtToChampions += stats['totalDamageDealtToChampions']
+                response.goldSpent += stats['goldSpent']
+                response.champLevel += stats['champLevel']
+                response.totalDamageTaken += stats['totalDamageTaken']
+                response.timeCCingOthers += stats['timeCCingOthers']
+                if stats['firstBloodKill'] or stats['firstBloodAssist']:
+                    response.firstBlood += 1
                 response.visionScore += stats["visionScore"]
                 response.totalMinionsKilled += stats['totalMinionsKilled']
                 neutralMinionsKileld = stats['neutralMinionsKilled'] + stats['neutralMinionsKilledTeamJungle'] + stats['neutralMinionsKilledEnemyJungle']
