@@ -4,6 +4,8 @@ import './App.css';
 import App from './App';
 import { PieChart } from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
+
+
 const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
 const GOOD = "green"
@@ -26,12 +28,13 @@ class StatRow extends Component {
     }
 
     getValueColor(valueNum) {
-
+        
         if (this.state.comparison == "asc") {
             valueNum = valueNum == 1 ? 2 : 1
         }
         let goodReturn = {
-            color: GOOD
+           // color:LightenDarkenColor(GOOD, 10)
+           color : GOOD
         }
         let badReturn = {
             color: BAD
