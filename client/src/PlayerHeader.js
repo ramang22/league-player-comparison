@@ -4,7 +4,7 @@ import './App.css';
 import App from './App';
 import { PieChart } from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
-import { ResponsiveRadar } from '@nivo/radar'
+import {ResponsiveRadar} from '@nivo/radar'
 const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 class Response extends Component {
 
@@ -134,69 +134,56 @@ class Response extends Component {
                 </div>
 
                 <div className="row">
-                    <span>Winrate {100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins']}</span>
-                </div>
-                <div className="row">
                     <span>Role selection</span>
                 </div>
                 <div className="row" style={{ width: "200px", height: "200px" }}>
-                    {/* <BarChart ylabel='Number of games'
-                        xlabel='Roles'
-                        width={250}
-                        height={300}
-                        margin={margin}
-                        data={this.state.roleData}
-                        strokeColor="#E7F6E7"
-                        highlightFill="#8ADABF"
-                        highlightStroke="#E87137"
-                    //onBarClick={this.handleBarClick}
-                    /> */
 
-                        <ResponsiveRadar
-                            width={250}
-                            height={250}
-                            data={this.state.roleData}
-                            keys={["player"]}
-                            indexBy="role"
-                            maxValue="auto"
-                            margin={{ top: 40, right: 0, bottom: 54, left: 0 }}
-                            curve="catmullRomClosed"
-                            borderWidth={4}
-                            borderColor="white"
-                            gridLevels={4}
-                            gridShape="circular"
-                            gridLabelOffset={24}
-                            enableDots={true}
-                            dotSize={6}
-                            dotColor="#E87137"
-                            dotBorderWidth={1}
-                            dotBorderColor="white"
-                            enableDotLabel={true}
-                            dotLabel="value"
-                            dotLabelYOffset={18}
-                            colors={["#E87137"]}
-                            fillOpacity={0.8}
-                            blendMode="multiply"
-                            animate={true}
-                            motionStiffness={90}
-                            motionDamping={15}
-                            isInteractive={true}
-                            theme={{
-                                dots: {
-                                    text: {
-                                        fill: "#8ADABF"
-                                    }
-                                },
-                                axis: {
+
+                         <ResponsiveRadar
+                             width={250}
+                             height={250}
+                             data={this.state.roleData}
+                             keys={["player"]}
+                             indexBy="role"
+                             maxValue="auto"
+                             margin={{ top: 40, right: 0, bottom: 54, left: 0 }}
+                             curve="catmullRomClosed"
+                             borderWidth={4}
+                             borderColor="white"
+                             gridLevels={4}
+                             gridShape="circular"
+                             gridLabelOffset={24}
+                             enableDots={true}
+                             dotSize={6}
+                             dotColor="#E87137"
+                             dotBorderWidth={1}
+                             dotBorderColor="white"
+                             enableDotLabel={true}
+                             dotLabel="value"
+                             dotLabelYOffset={18}
+                             colors={["#E87137"]}
+                             fillOpacity={0.8}
+                             blendMode="multiply"
+                             animate={true}
+                             motionStiffness={90}
+                             motionDamping={15}
+                             isInteractive={true}
+                             theme={{
+                                 dots: {
+                                     text: {
+                                         fill: "#8ADABF"
+                                     }
+                                 },
+                                 axis: {
                                     ticks: {
-                                        text: {
-                                            fill: '#8ADABF'
-                                        }
+                                         text: {
+                                             fill: '#8ADABF'
+                                         }
                                     },
-                                }
-                            }}
-                        />
-                    }
+                                 }
+                             }}
+                         />
+                    
                 </div>
             </div>
 
