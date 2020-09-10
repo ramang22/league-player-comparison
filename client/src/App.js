@@ -124,8 +124,20 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header" style={{fontFamily:"Cinzel Decorative", padding: "0"}}>
+          <div class="container float-md-left">
+            <div class="row">
+              App is in DEV mode. 
+            </div>
+            <div class="row">
+              Not so fast in loading atm. please wait. 
+            </div>
+            <div class="row">
+              Ked to dojebes, tak ti to neopravim. 
+            </div>
+          </div>
           <img src={logo} style={{height: "100%"}}></img>
-        </div>
+
+          </div>
 
         <form class="custom_form">
           <div class="form-row">
