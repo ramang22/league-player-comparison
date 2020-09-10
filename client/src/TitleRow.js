@@ -6,14 +6,19 @@ class TitleRow extends Component {
 
     constructor(props) {
         super(props);
+        let color = props.color
+        if (color === undefined){
+            color = "white"
+        }
         this.state = {
+            textColor : color
         }
 
     }
 
     render() {
         return (
-                <div class="d-flex justify-content-center h4 text-white mt-4">
+                <div class="d-flex justify-content-center h4 mt-4" style={{color : this.state.textColor}}>
                     
                         {this.props.name}
                     

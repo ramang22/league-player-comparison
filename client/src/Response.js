@@ -41,7 +41,7 @@ class Response extends Component {
 
                     <div className="col-sm-4">
                         <div className="container">
-                            <TitleRow name="Game info"/>
+                            <TitleRow name="Game info" color="#17a2b8"/>
                             <StatRow name="AVG Level" value1={this.props.player1['avgLv']} value2={this.props.player2['avgLv']} />
                             <StatRow name="AVG Game time" value1={this.props.player1['avgGameTime']} value2={this.props.player2['avgGameTime']} />
                             <TitleRow name="CS Diff"/>
