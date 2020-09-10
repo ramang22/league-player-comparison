@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import App from './App';
 import PlayerHeader from './PlayerHeader';
@@ -36,12 +35,12 @@ class Response extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-sm-4 card text-white mb-3" style={{backgroundColor:"#49545f", padding:"0", fontFamily:"exo2"}}>
+                    <div className="col-sm-4 card text-white mb-3 font_shit" style={{backgroundColor:"#49545f", padding:"0"}}>
                         <PlayerHeader player1={this.props.player1} />
                     </div>
 
                     <div className="col-sm-4">
-                        <div className="container" style={{fontFamily:"palatino"}}>
+                        <div className="container font_shit">
                             <TitleRow name="Game info" color="#F3EBD3"/>
                             <StatRow name="AVG Level" value1={this.props.player1['avgLv']} value2={this.props.player2['avgLv']} />
                             <StatRow name="AVG Game time" value1={this.props.player1['avgGameTime']} value2={this.props.player2['avgGameTime']} />
@@ -74,7 +73,7 @@ class Response extends Component {
                         </div>
                     </div>
 
-                    <div className="col-sm-4 card text-white mb-3" style={{backgroundColor:"#49545f", padding:"0", fontFamily:"exo2"}}>
+                    <div className="col-sm-4 card text-white mb-3 font_shit" style={{backgroundColor:"#49545f", padding:"0"}}>
                         <PlayerHeader player1={this.props.player2} />
                     </div>
                 </div>

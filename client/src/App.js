@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './Wipeout_Pengu_Ward.png';
 import './App.css';
 import axios from 'axios';
 import Response from './Response';
@@ -116,8 +116,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Summoner Vision</h2>
+        <div className="App-header" style={{fontFamily:"Cinzel Decorative", padding: "0"}}>
+          <img src={logo} style={{height: "100%"}}></img>
         </div>
 
         <form class="custom_form">
@@ -170,14 +170,14 @@ class App extends Component {
         <div>
           {this.state.isLoading == false ? (
             <div>
-              <div class="col-sm-2" style={{fontFamily:"exo2"}}>
+              <div class="col-sm-2 font_fetch_games">
                 <span class="text-info"> Number of fetch games</span>
                 <RangeSlider
                   value={this.state.sliderValue}
                   onChange={changeEvent => this.setState({ sliderValue: changeEvent.target.value })}
                   variant="info"
                 />
-                <div >
+                <div className="font_solo_flex">
                   <div class="custom-control custom-checkbox">
                     <input
                       type="checkbox"
@@ -197,7 +197,7 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-              <button onClick={this.click} class="btn btn-info" style={{margin:"0px 0px 50px 0px", fontFamily:"exo2"}}>Compare</button>
+              <button onClick={this.click} class="btn btn-info font_first_screen" style={{margin:"0px 0px 50px 0px"}}>Compare</button>
               {
                 this.state.loaded ? (
                   <div>
@@ -213,13 +213,13 @@ class App extends Component {
           ) :
             (
               <div class="container ">
-                <div style={{fontFamily:"exo2"}}>
+                <div className="font_shit">
                   <span class="text-info m-2">Searching for players</span>
                 </div>
                 <div class="d-flex justify-content-center">
                   <ReactLoading type="cubes" color="#F3EBD3" />
                 </div>
-                <div style={{fontFamily:"exo2"}}>
+                <div className="font_shit">
                   <span class="text-info m-2">Looking up {this.state.player1Input.toUpperCase()} and {this.state.player2Input.toUpperCase()}</span>
                 </div>
                 <Footer css={{

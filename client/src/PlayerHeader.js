@@ -108,7 +108,7 @@ class Response extends Component {
                     <div class="row no-gutters">
                         <div class="col-auto shadow">
                             <img src={this.getIcon()} class="img-fluid" style={mystyle} />
-                            <p class="card-text" style={{ color: "#F3EBD3"}}>{this.props.player1['tier']} {this.props.player1['rank']}</p>
+                            <p class="card-text font_division" style={{ color: "#F3EBD3"}}>{this.props.player1['tier']} {this.props.player1['rank']}</p>
 
                         </div>
                         <div class="col">
