@@ -49,7 +49,7 @@ class Response extends Component {
                             <StatRow name="10-20min" value1={this.props.player1['csDiff_10_20']} value2={this.props.player2['csDiff_10_20']} />
                             <StatRow name="20-30min" value1={this.props.player1['csDiff_20_30']} value2={this.props.player2['csDiff_20_30']} />
                             <StatRow name="30-Endgame" value1={this.props.player1['csDiff_30_end']} value2={this.props.player2['csDiff_30_end']} />
-                            <TitleRow name="AVG Farms"/>
+                            <TitleRow name="Farm"/>
                             <StatRow name="CS/min" value1={this.props.player1['cs_perMinute']} value2={this.props.player2['cs_perMinute']} />
                             <StatRow name="CS/game" value1={this.props.player1['cs_perGame']} value2={this.props.player2['cs_perGame']} />
                             <StatRow name="0-10min" value1={this.props.player1['farm_0_10']} value2={this.props.player2['farm_0_10']} />

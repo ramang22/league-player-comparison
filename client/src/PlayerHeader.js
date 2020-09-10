@@ -20,13 +20,13 @@ class Response extends Component {
                     {
                         title: 'Loose',
                         value: this.props.player1['losses'],
-                        color: '#A7151E',
+                        color: '#E87137',
                         rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']) * 100) / 100,
                     },
                     {
                         title: 'Win',
                         value: this.props.player1['wins'],
-                        color: '#A0C4BD',
+                        color: '#8ADABF',
                         rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins']) * 100) / 100,
                     }
 
@@ -148,7 +148,7 @@ class Response extends Component {
                              margin={{ top: 40, right: 0, bottom: 54, left: 0 }}
                              curve="catmullRomClosed"
                              borderWidth={4}
-                             borderColor="white"
+                             borderColor="#879893"
                              gridLevels={4}
                              gridShape="circular"
                              gridLabelOffset={24}
@@ -156,13 +156,13 @@ class Response extends Component {
                              dotSize={6}
                              dotColor="#E87137"
                              dotBorderWidth={1}
-                             dotBorderColor="white"
+                             dotBorderColor="#879893"
                              enableDotLabel={true}
                              dotLabel="value"
                              dotLabelYOffset={18}
-                             colors={["#E87137"]}
+                             colors={["#E7F6E7"]}       //color of whole inside
                              fillOpacity={0.8}
-                             blendMode="multiply"
+                             blendMode="normal"
                              animate={true}
                              motionStiffness={90}
                              motionDamping={15}
@@ -170,13 +170,13 @@ class Response extends Component {
                              theme={{
                                  dots: {
                                      text: {
-                                         fill: "#8ADABF"
+                                         fill: "#879893"
                                      }
                                  },
                                  axis: {
                                     ticks: {
                                          text: {
-                                             fill: '#8ADABF'
+                                             fill: '#E7F6E7'
                                          }
                                     },
                                  }
