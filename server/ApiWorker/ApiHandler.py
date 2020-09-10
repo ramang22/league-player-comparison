@@ -69,8 +69,9 @@ def getOnePlayerStats(watcher, playerName, playerServer, queueType, num):
                     response.champLevel += stats['champLevel']
                     response.totalDamageTaken += stats['totalDamageTaken']
                     response.timeCCingOthers += stats['timeCCingOthers']
-                    if stats['firstBloodKill'] or stats['firstBloodAssist']:
-                        response.firstBlood += 1
+                    if 'firstBloodKill' in stats or 'firstBloodAssists' in stats:
+                        if stats['firstBloodKill'] or stats['firstBloodAssist']:
+                            response.firstBlood += 1
                     response.visionScore += stats["visionScore"]
                     response.totalMinionsKilled += stats['totalMinionsKilled']
                     neutralMinionsKileld = stats['neutralMinionsKilled'] + \
@@ -119,8 +120,9 @@ def getOnePlayerStats(watcher, playerName, playerServer, queueType, num):
                         response.supp += 1
                     elif timeline['role'] == "DUO_CARRY":
                         response.adc += 1
-        except:
-            abort(404, "Error in watcher match id "+match['gameId'])
+        except Exception as e:
+            print(e)
+            abort(404, "Error in watcher match id "+str(match['gameId']))
 
     return response.prepareResponse()
 
