@@ -131,11 +131,11 @@ def getStats(player1Name, server1, player2Name, server2, flexq, soloq, num):
 
     watcher = LolWatcher(apiKey.apiKey)
     if soloq and flexq:
-        queueType = [420, 470]
+        queueType = [420, 440]
     elif soloq:
         queueType = [420]
     elif flexq:
-        queueType = [470]
+        queueType = [440]
     playerOneStats = getOnePlayerStats(
         watcher, player1Name, server1, queueType, num)
     playerTwoStats = getOnePlayerStats(
