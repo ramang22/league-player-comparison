@@ -25,7 +25,9 @@ class App extends Component {
       player2: {},
       sliderValue: 1,
       soloqbox: true,
-      flexbox: false
+      flexbox: false,
+      showError: false,
+      errorMsg : ""
     };
     this.click = this.click.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -108,7 +110,9 @@ class App extends Component {
           player1: {},
           player2: {},
           soloqbox: true,
-          flexbox: false
+          flexbox: false,
+          showError: true,
+          errorMsg : err.message
         })
       });
 
@@ -170,7 +174,7 @@ class App extends Component {
         <div>
           {this.state.isLoading == false ? (
             <div>
-              <div class="col-sm-2" style={{fontFamily:"exo2"}}>
+              <div class="col-sm-2" style={{ fontFamily: "exo2" }}>
                 <span class="text-info"> Number of fetch games</span>
                 <RangeSlider
                   value={this.state.sliderValue}
@@ -197,7 +201,7 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-              <button onClick={this.click} class="btn btn-info" style={{margin:"0px 0px 50px 0px", fontFamily:"exo2"}}>Compare</button>
+              <button onClick={this.click} class="btn btn-info" style={{ margin: "0px 0px 50px 0px", fontFamily: "exo2" }}>Compare</button>
               {
                 this.state.loaded ? (
                   <div>
@@ -205,7 +209,10 @@ class App extends Component {
 
                   </div>
 
-                ) : (<div></div>)
+                ) : (<div>{this.state.showError ? (
+                <div>
+                  {this.state.errorMsg}
+                </div>) : (<div></div>)}</div>)
 
               }
               <Footer />
@@ -213,21 +220,21 @@ class App extends Component {
           ) :
             (
               <div class="container ">
-                <div style={{fontFamily:"exo2"}}>
+                <div style={{ fontFamily: "exo2" }}>
                   <span class="text-info m-2">Searching for players</span>
                 </div>
                 <div class="d-flex justify-content-center">
                   <ReactLoading type="cubes" color="#F3EBD3" />
                 </div>
-                <div style={{fontFamily:"exo2"}}>
+                <div style={{ fontFamily: "exo2" }}>
                   <span class="text-info m-2">Looking up {this.state.player1Input.toUpperCase()} and {this.state.player2Input.toUpperCase()}</span>
                 </div>
                 <Footer css={{
                   'position': 'absolute',
                   'bottom': 0,
-                  'right' : 0,
-                  'left' : 0
-                  
+                  'right': 0,
+                  'left': 0
+
                 }} />
               </div>
 
@@ -236,7 +243,7 @@ class App extends Component {
         </div>
 
 
-      </div>
+      </div >
     );
   }
 }
