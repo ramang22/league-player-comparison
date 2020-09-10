@@ -108,12 +108,12 @@ class Response extends Component {
                     <div class="row no-gutters">
                         <div class="col-auto shadow">
                             <img src={this.getIcon()} class="img-fluid" style={mystyle} />
-                            <p class="card-text">{this.props.player1['tier']} {this.props.player1['rank']}</p>
+                            <p class="card-text" style={{ color: "#F3EBD3"}}>{this.props.player1['tier']} {this.props.player1['rank']}</p>
 
                         </div>
                         <div class="col">
                             <div class="card-block px-2">
-                                <h4 class="card-title">{this.props.player1['name']}</h4>
+                                <h4 class="card-title" style={{ color: "#F3EBD3"}}>{this.props.player1['name']}</h4>
                                 <p class="card-text">KDA: {this.props.player1['kda']}</p>
                                 <p class="card-text">Games: {this.props.player1['match']}</p>
                                 <p class="card-text">K/D/A: {this.props.player1['kills']}/{this.props.player1['deaths']}/{this.props.player1['assists']}</p>
@@ -123,7 +123,7 @@ class Response extends Component {
                     </div>
                 </div>
                 
-                <TitleRow name="Win/Loss"/>
+                <TitleRow name="Win/Loss" color="#F3EBD3"/>
                 <div className="row d-flex justify-content-center">
                     <PieChart
                         data={this.state.pieData}
@@ -137,7 +137,7 @@ class Response extends Component {
                     />
                 </div>
 
-                <TitleRow name="Role selection"/>
+                <TitleRow name="Role selection" color="#F3EBD3"/>
                 <div className="row d-flex justify-content-center" style={{ width: "350px", height: "200px" }}>
 
 

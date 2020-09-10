@@ -7,6 +7,7 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 import ReactLoading from 'react-loading';
 import Footer from './Footer'
+
 class App extends Component {
 
 
@@ -169,7 +170,7 @@ class App extends Component {
         <div>
           {this.state.isLoading == false ? (
             <div>
-              <div class="col-sm-2">
+              <div class="col-sm-2" style={{fontFamily:"exo2"}}>
                 <span class="text-info"> Number of fetch games</span>
                 <RangeSlider
                   value={this.state.sliderValue}
@@ -196,7 +197,7 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-              <button onClick={this.click} class="btn btn-info" style={{margin:"0px 0px 50px 0px"}}>Compare</button>
+              <button onClick={this.click} class="btn btn-info" style={{margin:"0px 0px 50px 0px", fontFamily:"exo2"}}>Compare</button>
               {
                 this.state.loaded ? (
                   <div>
@@ -212,13 +213,13 @@ class App extends Component {
           ) :
             (
               <div class="container ">
-                <div >
+                <div style={{fontFamily:"exo2"}}>
                   <span class="text-info m-2">Searching for players</span>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <ReactLoading type="cubes" color="rgb(232, 113, 55)" />
+                  <ReactLoading type="cubes" color="#F3EBD3" />
                 </div>
-                <div >
+                <div style={{fontFamily:"exo2"}}>
                   <span class="text-info m-2">Looking up {this.state.player1Input.toUpperCase()} and {this.state.player2Input.toUpperCase()}</span>
                 </div>
                 <Footer css={{
