@@ -136,6 +136,8 @@ class Response extends Component {
                         }}
                     />
                 </div>
+                
+                <hr/>
 
                 <TitleRow name="Role selection" color="#F3EBD3"/>
                 <div className="row d-flex justify-content-center" style={{ width: "350px", height: "200px" }}>
@@ -182,7 +184,15 @@ class Response extends Component {
                                              fill: '#E7F6E7'
                                          }
                                     },
-                                 }
+                                 },
+                                 tooltip: {
+                                    container: {
+                                        background: '#2d374d',
+                                        color: 'inherit',
+                                        boxShadow: '0 3px 9px rgba(0, 0, 0, 0.5)',
+                                        fontFamily: "monospace"
+                                    }
+                                }
                              }}
                          />
                     

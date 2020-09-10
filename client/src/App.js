@@ -170,7 +170,7 @@ class App extends Component {
         <div>
           {this.state.isLoading == false ? (
             <div>
-              <div class="col-sm-2 font_fetch_games">
+              <div class="col-sm-2 font_solo_flex">
                 <span class="text-info"> Number of fetch games</span>
                 <RangeSlider
                   value={this.state.sliderValue}

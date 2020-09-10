@@ -52,6 +52,7 @@ class Response extends Component {
                             <TitleRow name="Farm" color="#F3EBD3"/>
                             <StatRow name="CS/min" value1={this.props.player1['cs_perMinute']} value2={this.props.player2['cs_perMinute']} />
                             <StatRow name="CS/game" value1={this.props.player1['cs_perGame']} value2={this.props.player2['cs_perGame']} />
+                            <hr/>
                             <StatRow name="0-10min" value1={this.props.player1['farm_0_10']} value2={this.props.player2['farm_0_10']} />
                             <StatRow name="10-20min" value1={this.props.player1['farm_10_20']} value2={this.props.player2['farm_10_20']} />
                             <StatRow name="20-30min" value1={this.props.player1['farm_20_30']} value2={this.props.player2['farm_20_30']} />
@@ -59,15 +60,19 @@ class Response extends Component {
                             <TitleRow name="Damage" color="#F3EBD3"/>
                             <StatRow name="To champs/game" value1={this.props.player1['totalDamageDealtToChampions_perGame']} value2={this.props.player2['totalDamageDealtToChampions_perGame']} />
                             <StatRow name="To champs/min" value1={this.props.player1['totalDamageDealtToChampions_perMinute']} value2={this.props.player2['totalDamageDealtToChampions_perMinute']} />
+                            <hr/>
                             <StatRow name="To objectives/game" value1={this.props.player1['damageDealtToObjectives_perGame']} value2={this.props.player2['damageDealtToObjectives_perGame']} />
                             <StatRow name="To turrets/game" value1={this.props.player1['damageDealtToTurrets_perGame']} value2={this.props.player2['damageDealtToTurrets_perGame']} />
+                            <hr/>
                             <StatRow name="DMG per 1 Gold" value1={this.props.player1['dmgPerGold']} value2={this.props.player2['dmgPerGold']} />
                             <StatRow name="First Blood KP%" value1={this.props.player1['firstBloodKP']} value2={this.props.player2['firstBloodKP']} />
+                            <hr/>
                             <StatRow name="Tanked/game" value1={this.props.player1['totalDamageTaken_perGame']} value2={this.props.player2['totalDamageTaken_perGame']} />
                             <StatRow name="Tanked/minute" value1={this.props.player1['totalDamageTaken_perMinute']} value2={this.props.player2['totalDamageTaken_perMinute']} />
                             <TitleRow name="Vision" color="#F3EBD3"/>
                             <StatRow name="Score/game" value1={this.props.player1['visionScore_perGame']} value2={this.props.player2['visionScore_perGame']} />
                             <StatRow name="Vision wards/game" value1={this.props.player1['visionWardsBoughtInGame']} value2={this.props.player2['visionWardsBoughtInGame']} />
+                            <hr/>
                             <StatRow name="Killed wards/game" value1={this.props.player1['wardsKilled_perGame']} value2={this.props.player2['wardsKilled_perGame']} />
                             <StatRow name="Wards Placed/game" value1={this.props.player1['wardsPlaces_perGame']} value2={this.props.player2['wardsPlaces_perGame']} />
                         </div>
