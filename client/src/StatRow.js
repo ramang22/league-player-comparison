@@ -8,9 +8,9 @@ import BarChart from 'react-bar-chart';
 
 const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
-const GOOD = "green"
-const BAD = "red"
-const TIE = "yellow"
+const GOOD = "#8ADABF"
+const BAD = "#E87137"
+const TIE = "#e3e050"
 class StatRow extends Component {
 
     constructor(props) {
