@@ -6,7 +6,7 @@ import Response from './Response';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 import ReactLoading from 'react-loading';
-
+import Footer from './Footer'
 class App extends Component {
 
 
@@ -61,8 +61,8 @@ class App extends Component {
     this.setState({ flexbox: !this.state.flexbox });
   }
 
-  handleKeyPress= (event) => {
-    if(event.key === 'Enter'){
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
       this.click()
     }
   }
@@ -147,7 +147,7 @@ class App extends Component {
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
 
-                  <select onChange={evt => this.handleServer2(evt)} class="btn btn-outline-info dropdown-toggle"  required>
+                  <select onChange={evt => this.handleServer2(evt)} class="btn btn-outline-info dropdown-toggle" required>
                     <option value="EUW1">EUW</option>
                     <option value="EUN1">EUNE</option>
                     <option value="KR">KR</option>
@@ -161,7 +161,7 @@ class App extends Component {
                     <option value="TR1">TR</option>
                   </select>
                 </div>
-                <input value={this.state.player2Input} onChange={evt => this.updatePlayerTwoInput(evt)} type="text" class="form-control" aria-label="Text input with dropdown button"  onKeyPress={this.handleKeyPress} placeholder="Summoner Name" required></input>
+                <input value={this.state.player2Input} onChange={evt => this.updatePlayerTwoInput(evt)} type="text" class="form-control" aria-label="Text input with dropdown button" onKeyPress={this.handleKeyPress} placeholder="Summoner Name" required></input>
               </div>
             </div>
           </div>
@@ -199,29 +199,41 @@ class App extends Component {
               <button onClick={this.click} class="btn btn-info" style={{margin:"0px 0px 50px 0px"}}>Compare</button>
               {
                 this.state.loaded ? (
-                  <Response player1={this.state.player1} player2={this.state.player2} />
+                  <div>
+                    <Response player1={this.state.player1} player2={this.state.player2} />
+
+                  </div>
+
                 ) : (<div></div>)
 
               }
+              <Footer />
             </div>
-
           ) :
-
             (
               <div class="container ">
                 <div >
                   <span class="text-info m-2">Searching for players</span>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <ReactLoading type="cubes" color="white" />
+                  <ReactLoading type="cubes" color="rgb(232, 113, 55)" />
                 </div>
                 <div >
                   <span class="text-info m-2">Looking up {this.state.player1Input.toUpperCase()} and {this.state.player2Input.toUpperCase()}</span>
                 </div>
+                <Footer css={{
+                  'position': 'absolute',
+                  'bottom': 0,
+                  'right' : 0,
+                  'left' : 0
+                  
+                }} />
               </div>
+
             )
           }
         </div>
+
 
       </div>
     );
