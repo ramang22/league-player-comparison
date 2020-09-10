@@ -20,13 +20,13 @@ class Response extends Component {
                     {
                         title: 'Loose',
                         value: this.props.player1['losses'],
-                        color: '#E87137',
+                        color: '#BD3C28',
                         rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']) * 100) / 100,
                     },
                     {
                         title: 'Win',
                         value: this.props.player1['wins'],
-                        color: '#8ADABF',
+                        color: '#72B982',
                         rate: Math.round((100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins']) * 100) / 100,
                     }
 
@@ -102,12 +102,14 @@ class Response extends Component {
             fontFamily: 'sans-serif',
         };
         return (
-            <div className="container">
+            <div className="container" style={{ width: "inherit", height: "inherit", margin:"0", padding:"0" }}>
 
-                <div class="card text-black bg-light mb-3">
+                <div class="card text-white mb-3 shadow" style={{backgroundColor:"#49545f"}}>
                     <div class="row no-gutters">
                         <div class="col-auto shadow">
                             <img src={this.getIcon()} class="img-fluid" style={mystyle} />
+                            <p class="card-text">{this.props.player1['tier']} {this.props.player1['rank']}</p>
+
                         </div>
                         <div class="col">
                             <div class="card-block px-2">
@@ -120,6 +122,7 @@ class Response extends Component {
                         </div>
                     </div>
                 </div>
+                
                 <TitleRow name="Win/Loss"/>
                 <div className="row d-flex justify-content-center">
                     <PieChart
@@ -131,36 +134,36 @@ class Response extends Component {
                         labelStyle={{
                             ...defaultLabelStyle,
                         }}
-                    />;
+                    />
                 </div>
 
                 <TitleRow name="Role selection"/>
-                <div className="row d-flex justify-content-center" style={{ width: "200px", height: "200px" }}>
+                <div className="row d-flex justify-content-center" style={{ width: "350px", height: "200px" }}>
 
 
                          <ResponsiveRadar
-                             width={250}
-                             height={250}
+                             width={300}
+                             height={300}
                              data={this.state.roleData}
                              keys={["player"]}
                              indexBy="role"
                              maxValue="auto"
-                             margin={{ top: 40, right: 0, bottom: 54, left: 0 }}
+                             margin={{ top: 0, right: 50, bottom: 54, left: 100 }}
                              curve="catmullRomClosed"
                              borderWidth={4}
-                             borderColor="#879893"
+                             borderColor="#94C3B5"
                              gridLevels={4}
                              gridShape="circular"
                              gridLabelOffset={24}
                              enableDots={true}
                              dotSize={6}
-                             dotColor="#E87137"
+                             dotColor="#E48648"
                              dotBorderWidth={1}
-                             dotBorderColor="#879893"
+                             dotBorderColor="#94C3B5"
                              enableDotLabel={true}
                              dotLabel="value"
                              dotLabelYOffset={18}
-                             colors={["#E7F6E7"]}       //color of whole inside
+                             colors={["#E59F95"]}       //color of whole inside
                              fillOpacity={0.8}
                              blendMode="normal"
                              animate={true}

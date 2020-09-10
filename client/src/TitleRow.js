@@ -13,7 +13,7 @@ class TitleRow extends Component {
 
     render() {
         return (
-                <div class="d-flex justify-content-center h4 text-white mt-1">
+                <div class="d-flex justify-content-center h4 text-white mt-4">
                     
                         {this.props.name}
                     

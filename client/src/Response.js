@@ -35,7 +35,7 @@ class Response extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-sm-4">
+                    <div className="col-sm-4 card text-white mb-3" style={{backgroundColor:"#49545f", padding:"0"}}>
                         <PlayerHeader player1={this.props.player1} />
                     </div>
 
@@ -67,13 +67,13 @@ class Response extends Component {
                             <StatRow name="Tanked/minute" value1={this.props.player1['totalDamageTaken_perMinute']} value2={this.props.player2['totalDamageTaken_perMinute']} />
                             <TitleRow name="Vision"/>
                             <StatRow name="Score/game" value1={this.props.player1['visionScore_perGame']} value2={this.props.player2['visionScore_perGame']} />
-                            <StatRow name="Wards/game" value1={this.props.player1['visionWardsBoughtInGame']} value2={this.props.player2['visionWardsBoughtInGame']} />
+                            <StatRow name="Vision wards/game" value1={this.props.player1['visionWardsBoughtInGame']} value2={this.props.player2['visionWardsBoughtInGame']} />
                             <StatRow name="Killed wards/game" value1={this.props.player1['wardsKilled_perGame']} value2={this.props.player2['wardsKilled_perGame']} />
                             <StatRow name="Wards Placed/game" value1={this.props.player1['wardsPlaces_perGame']} value2={this.props.player2['wardsPlaces_perGame']} />
                         </div>
                     </div>
 
-                    <div className="col-sm-4">
+                    <div className="col-sm-4 card text-white mb-3" style={{backgroundColor:"#49545f", padding:"0"}}>
                         <PlayerHeader player1={this.props.player2} />
                     </div>
                 </div>

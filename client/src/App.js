@@ -196,7 +196,7 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-              <button onClick={this.click} class="btn btn-info">Compare</button>
+              <button onClick={this.click} class="btn btn-info" style={{margin:"0px 0px 50px 0px"}}>Compare</button>
               {
                 this.state.loaded ? (
                   <Response player1={this.state.player1} player2={this.state.player2} />
