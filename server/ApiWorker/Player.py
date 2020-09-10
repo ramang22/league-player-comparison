@@ -78,7 +78,10 @@ class responsePlayer:
             self.firstBloodKP = "0%"
         else:    
             self.firstBloodKP = str(round((Player.firstBlood / Player.match * 100),2))+"%"
-        self.dmgPerGold = round(Player.totalDamageDealtToChampions / Player.goldSpent,2)
+        if Player.goldSpent == 0:
+            self.dmgPerGold = round(Player.totalDamageDealtToChampions,2)
+        else :
+            self.dmgPerGold = round(Player.totalDamageDealtToChampions / Player.goldSpent,2)
         if Player.deaths == 0:
             self.kda = (Player.kills + Player.assists)
         else:  
