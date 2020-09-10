@@ -3,7 +3,7 @@ import json
 from .Player import Player
 from LolApiConstants import apiKey
 from flask import abort
-
+import logging
 
 def getOnePlayerStats(watcher, playerName, playerServer, queueType, num):
     try:
@@ -121,7 +121,7 @@ def getOnePlayerStats(watcher, playerName, playerServer, queueType, num):
                     elif timeline['role'] == "DUO_CARRY":
                         response.adc += 1
         except Exception as e:
-            print(e)
+            logging.warning(e)
             abort(404, "Error in watcher match id "+str(match['gameId']))
 
     return response.prepareResponse()
