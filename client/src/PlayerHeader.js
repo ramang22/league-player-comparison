@@ -5,6 +5,9 @@ import App from './App';
 import { PieChart } from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
 import {ResponsiveRadar} from '@nivo/radar'
+import StatRow from "./StatRow";
+import TitleRow from "./TitleRow";
+
 const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 class Response extends Component {
 
@@ -117,10 +120,8 @@ class Response extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="row">
-                    <span>Win/Loss</span>
-                </div>
-                <div className="row">
+                <TitleRow name="Win/Loss"/>
+                <div className="row d-flex justify-content-center">
                     <PieChart
                         data={this.state.pieData}
                         label={({ dataEntry }) => (dataEntry.rate)}
@@ -133,10 +134,8 @@ class Response extends Component {
                     />;
                 </div>
 
-                <div className="row">
-                    <span>Role selection</span>
-                </div>
-                <div className="row" style={{ width: "200px", height: "200px" }}>
+                <TitleRow name="Role selection"/>
+                <div className="row d-flex justify-content-center" style={{ width: "200px", height: "200px" }}>
 
 
                          <ResponsiveRadar

@@ -196,15 +196,15 @@ class App extends Component {
           ) :
 
             (
-              <div class="container d-flex justify-content-center">
+              <div class="container ">
                 <div >
                   <span class="text-info m-2">Searching for players</span>
                 </div>
-                <div >
+                <div class="d-flex justify-content-center">
                   <ReactLoading type="cubes" color="white" />
                 </div>
                 <div >
-                  <span class="text-info m-2">Looking up {this.state.player1Input} and {this.state.player2Input}</span>
+                  <span class="text-info m-2">Looking up {this.state.player1Input.toUpperCase()} and {this.state.player2Input.toUpperCase()}</span>
                 </div>
               </div>
             )
