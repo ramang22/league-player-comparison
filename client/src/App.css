@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kufam:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 
 .App {
   text-align: center;
@@ -29,6 +33,22 @@
   margin: 0 auto;
   margin-top: 2%;
   width:80% 
+}
+
+.font_fetch_games{
+  font-family:"Kufam";
+}
+
+.font_solo_flex{
+  font-family:"Kumbh Sans";
+}
+
+.font_division{
+  font-family:"exo2";
+}
+
+.font_shit{
+  font-family:"Mukta";
 }
 
 body{
