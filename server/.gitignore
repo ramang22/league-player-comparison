@@ -3,3 +3,6 @@ LolApiConstants/apiKey.py
 LolApiConstants/__pycache__/
 ApiWorker/__pycache__/ApiHandler.cpython-38.pyc
 ApiWorker/__pycache__/Player.cpython-38.pyc
+ApiWorker\__pycache__
+.gitignore
+logs/
