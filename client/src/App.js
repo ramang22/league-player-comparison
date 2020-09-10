@@ -25,7 +25,9 @@ class App extends Component {
       player2: {},
       sliderValue: 1,
       soloqbox: true,
-      flexbox: false
+      flexbox: false,
+      showError: false,
+      errorMsg : ""
     };
     this.click = this.click.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -108,8 +110,13 @@ class App extends Component {
           player1: {},
           player2: {},
           soloqbox: true,
-          flexbox: false
+          flexbox: false,
+          showError: true,
+          errorMsg : err.message + " [" + this.state.player1Input + "#" + this.state.player1Server + " and " +  this.state.player2Input + "#" + this.state.player2Server + "]" 
         })
+        setTimeout(function(){
+          this.setState({showError:false});
+     }.bind(this),5000);
       });
 
   }
@@ -205,7 +212,10 @@ class App extends Component {
 
                   </div>
 
-                ) : (<div></div>)
+                ) : (<div>{this.state.showError ? (
+                <div class="alert alert-danger" style={{borderColor : "red", borderWidth : 2}}>
+                  {this.state.errorMsg}
+                </div>) : (<div></div>)}</div>)
 
               }
               <Footer />
@@ -225,9 +235,9 @@ class App extends Component {
                 <Footer css={{
                   'position': 'absolute',
                   'bottom': 0,
-                  'right' : 0,
-                  'left' : 0
-                  
+                  'right': 0,
+                  'left': 0
+
                 }} />
               </div>
 
@@ -236,7 +246,7 @@ class App extends Component {
         </div>
 
 
-      </div>
+      </div >
     );
   }
 }

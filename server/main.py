@@ -22,6 +22,7 @@ def hello_world():
                 str(playerOne), str(playerTwo), str(serverOne), str(serverTwo), str(flexq), str(soloq), str(num))
     
     if playerOne is None or playerOne == "" :
+        print("tu som")
         abort(404, description="Player 1 not found")
     if playerTwo is None or playerTwo == "":
         abort(404, description="Player 2 not found")
