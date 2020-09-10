@@ -29,6 +29,7 @@ class App extends Component {
     this.click = this.click.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeFlex = this.handleChangeFlex.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   updatePlayerOneInput(evt) {
@@ -58,6 +59,12 @@ class App extends Component {
   }
   handleChangeFlex(event) {
     this.setState({ flexbox: !this.state.flexbox });
+  }
+
+  handleKeyPress= (event) => {
+    if(event.key === 'Enter'){
+      this.click()
+    }
   }
   click() {
 
@@ -95,7 +102,12 @@ class App extends Component {
       .catch((err) => {
         console.log(err)
         this.setState({
-          isLoading : false
+          isLoading: false,
+          loaded: false,
+          player1: {},
+          player2: {},
+          soloqbox: true,
+          flexbox: false
         })
       });
 
@@ -135,7 +147,7 @@ class App extends Component {
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
 
-                  <select onChange={evt => this.handleServer2(evt)} class="btn btn-outline-info dropdown-toggle" required>
+                  <select onChange={evt => this.handleServer2(evt)} class="btn btn-outline-info dropdown-toggle"  required>
                     <option value="EUW1">EUW</option>
                     <option value="EUN1">EUNE</option>
                     <option value="KR">KR</option>
@@ -149,7 +161,7 @@ class App extends Component {
                     <option value="TR1">TR</option>
                   </select>
                 </div>
-                <input value={this.state.player2Input} onChange={evt => this.updatePlayerTwoInput(evt)} type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Summoner Name" required></input>
+                <input value={this.state.player2Input} onChange={evt => this.updatePlayerTwoInput(evt)} type="text" class="form-control" aria-label="Text input with dropdown button"  onKeyPress={this.handleKeyPress} placeholder="Summoner Name" required></input>
               </div>
             </div>
           </div>
