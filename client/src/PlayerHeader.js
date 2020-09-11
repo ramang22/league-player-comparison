@@ -4,7 +4,7 @@ import './App.css';
 import App from './App';
 import { PieChart } from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
-import {ResponsiveRadar} from '@nivo/radar'
+import { ResponsiveRadar, ResponsiveBar } from '@nivo/radar'
 import StatRow from "./StatRow";
 import TitleRow from "./TitleRow";
 
@@ -102,18 +102,18 @@ class Response extends Component {
             fontFamily: 'sans-serif',
         };
         return (
-            <div className="container" style={{ width: "inherit", height: "inherit", margin:"0", padding:"0" }}>
+            <div className="container" style={{ width: "inherit", height: "inherit", margin: "0", padding: "0" }}>
 
-                <div class="card text-white mb-3 shadow" style={{backgroundColor:"#49545f"}}>
+                <div class="card text-white mb-3 shadow" style={{ backgroundColor: "#49545f" }}>
                     <div class="row no-gutters">
                         <div class="col-auto shadow">
                             <img src={this.getIcon()} class="img-fluid" style={mystyle} />
-                            <p class="card-text font_division" style={{ color: "#F3EBD3"}}>{this.props.player1['tier']} {this.props.player1['rank']}</p>
+                            <p class="card-text font_division" style={{ color: "#F3EBD3" }}>{this.props.player1['tier']} {this.props.player1['rank']}</p>
 
                         </div>
                         <div class="col">
                             <div class="card-block px-2">
-                                <h4 class="card-title" style={{ color: "#F3EBD3"}}>{this.props.player1['name']}</h4>
+                                <h4 class="card-title" style={{ color: "#F3EBD3" }}>{this.props.player1['name']}</h4>
                                 <p class="card-text">KDA: {this.props.player1['kda']}</p>
                                 <p class="card-text">Games: {this.props.player1['match']}</p>
                                 <p class="card-text">K/D/A: {this.props.player1['kills']}/{this.props.player1['deaths']}/{this.props.player1['assists']}</p>
@@ -122,8 +122,8 @@ class Response extends Component {
                         </div>
                     </div>
                 </div>
-                
-                <TitleRow name="Win/Loss" color="#F3EBD3"/>
+
+                <TitleRow name="Win/Loss" color="#F3EBD3" />
                 <div className="row d-flex justify-content-center">
                     <PieChart
                         data={this.state.pieData}
@@ -136,66 +136,160 @@ class Response extends Component {
                         }}
                     />
                 </div>
-                
-                <hr/>
 
-                <TitleRow name="Role selection" color="#F3EBD3"/>
+                <hr />
+
+                <TitleRow name="Role selection" color="#F3EBD3" />
                 <div className="row d-flex justify-content-center" style={{ width: "350px", height: "200px" }}>
 
 
-                         <ResponsiveRadar
-                             width={300}
-                             height={300}
-                             data={this.state.roleData}
-                             keys={["player"]}
-                             indexBy="role"
-                             maxValue="auto"
-                             margin={{ top: 0, right: 50, bottom: 54, left: 100 }}
-                             curve="catmullRomClosed"
-                             borderWidth={4}
-                             borderColor="#94C3B5"
-                             gridLevels={4}
-                             gridShape="circular"
-                             gridLabelOffset={24}
-                             enableDots={true}
-                             dotSize={6}
-                             dotColor="#E48648"
-                             dotBorderWidth={1}
-                             dotBorderColor="#94C3B5"
-                             enableDotLabel={true}
-                             dotLabel="value"
-                             dotLabelYOffset={18}
-                             colors={["#E59F95"]}       //color of whole inside
-                             fillOpacity={0.8}
-                             blendMode="normal"
-                             animate={true}
-                             motionStiffness={90}
-                             motionDamping={15}
-                             isInteractive={true}
-                             theme={{
-                                 dots: {
-                                     text: {
-                                         fill: "#879893"
-                                     }
-                                 },
-                                 axis: {
-                                    ticks: {
-                                         text: {
-                                             fill: '#E7F6E7'
-                                         }
-                                    },
-                                 },
-                                 tooltip: {
-                                    container: {
-                                        background: '#2d374d',
-                                        color: 'inherit',
-                                        boxShadow: '0 3px 9px rgba(0, 0, 0, 0.5)',
-                                        fontFamily: "monospace"
-                                    }
+                    <ResponsiveRadar
+                        width={300}
+                        height={300}
+                        data={this.state.roleData}
+                        keys={["player"]}
+                        indexBy="role"
+                        maxValue="auto"
+                        margin={{ top: 0, right: 50, bottom: 54, left: 100 }}
+                        curve="catmullRomClosed"
+                        borderWidth={4}
+                        borderColor="#94C3B5"
+                        gridLevels={4}
+                        gridShape="circular"
+                        gridLabelOffset={24}
+                        enableDots={true}
+                        dotSize={6}
+                        dotColor="#E48648"
+                        dotBorderWidth={1}
+                        dotBorderColor="#94C3B5"
+                        enableDotLabel={true}
+                        dotLabel="value"
+                        dotLabelYOffset={18}
+                        colors={["#E59F95"]}       //color of whole inside
+                        fillOpacity={0.8}
+                        blendMode="normal"
+                        animate={true}
+                        motionStiffness={90}
+                        motionDamping={15}
+                        isInteractive={true}
+                        theme={{
+                            dots: {
+                                text: {
+                                    fill: "#879893"
                                 }
-                             }}
-                         />
-                    
+                            },
+                            axis: {
+                                ticks: {
+                                    text: {
+                                        fill: '#E7F6E7'
+                                    }
+                                },
+                            },
+                            tooltip: {
+                                container: {
+                                    background: '#2d374d',
+                                    color: 'inherit',
+                                    boxShadow: '0 3px 9px rgba(0, 0, 0, 0.5)',
+                                    fontFamily: "monospace"
+                                }
+                            }
+                        }}
+                    />
+
+                </div>
+                <TitleRow name="Champion play" color="#F3EBD3" />
+                <div className="row d-flex justify-content-center" style={{ width: "350px", height: "200px" }}>
+                    <ResponsiveBar
+                        data={data}
+                        keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
+                        indexBy="country"
+                        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+                        padding={0.7}
+                        layout="horizontal"
+                        colors={{ scheme: 'nivo' }}
+                        defs={[
+                            {
+                                id: 'dots',
+                                type: 'patternDots',
+                                background: 'inherit',
+                                color: '#38bcb2',
+                                size: 4,
+                                padding: 1,
+                                stagger: true
+                            },
+                            {
+                                id: 'lines',
+                                type: 'patternLines',
+                                background: 'inherit',
+                                color: '#eed312',
+                                rotation: -45,
+                                lineWidth: 6,
+                                spacing: 10
+                            }
+                        ]}
+                        fill={[
+                            {
+                                match: {
+                                    id: 'fries'
+                                },
+                                id: 'dots'
+                            },
+                            {
+                                match: {
+                                    id: 'sandwich'
+                                },
+                                id: 'lines'
+                            }
+                        ]}
+                        borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                        axisTop={null}
+                        axisRight={null}
+                        axisBottom={{
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: 0,
+                            legend: 'country',
+                            legendPosition: 'middle',
+                            legendOffset: 32
+                        }}
+                        axisLeft={{
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: 0,
+                            legend: 'food',
+                            legendPosition: 'middle',
+                            legendOffset: -40
+                        }}
+                        enableGridY={false}
+                        labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                        legends={[
+                            {
+                                dataFrom: 'keys',
+                                anchor: 'right',
+                                direction: 'column',
+                                justify: false,
+                                translateX: 120,
+                                translateY: 0,
+                                itemsSpacing: 2,
+                                itemWidth: 100,
+                                itemHeight: 25,
+                                itemDirection: 'left-to-right',
+                                itemOpacity: 0.85,
+                                symbolSize: 20,
+                                effects: [
+                                    {
+                                        on: 'hover',
+                                        style: {
+                                            itemOpacity: 1
+                                        }
+                                    }
+                                ]
+                            }
+                        ]}
+                        animate={true}
+                        motionStiffness={90}
+                        motionDamping={15}
+                    />
                 </div>
             </div>
 
