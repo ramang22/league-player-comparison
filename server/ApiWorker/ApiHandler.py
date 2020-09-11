@@ -38,26 +38,46 @@ def getOnePlayerStats(watcher, playerName, playerServer, queueType, num):
     except:
         abort(404, "Error in watcher matchlist by acc")
 
+
+    latest = watcher.data_dragon.versions_for_region('na1')['n']['champion']
+    static_champ_list = watcher.data_dragon.champions(latest, False, 'en_US')
+    champ_dict = {}
+    for key in static_champ_list['data']:
+        row = static_champ_list['data'][key]
+        champ_dict[row['key']] = row['id']
     for match in my_matches['matches'][:int(num)]:
         try:
             match_detail = watcher.match.by_id(playerServer, match['gameId'])
             participantId = 0
             response.match += 1
+            championId = ""
             response.timespent += match_detail['gameDuration']
             for participant in match_detail['participantIdentities']:
                 if str(participant['player']['summonerName']).lower() == str(playerName).lower():
                     participantId = participant['participantId']
+                    
                     break
 
             winned = False
             for participantStats in match_detail['participants']:
                 if participantStats['participantId'] == participantId:
+                    championId = str(participantStats['championId'])
+                    if championId not in response.champPlayed:
+                        response.champPlayed[championId] = {
+                            "win" : 0,
+                            "played" : 1,
+                            "champName" : champ_dict[championId],
+                            "id" : championId
+                        }
+                    else:
+                        response.champPlayed[championId]['played'] += 1
                     stats = participantStats['stats']
                     response.kills += stats['kills']
                     response.deaths += stats['deaths']
                     response.assists += stats['assists']
                     if stats['win']:
                         response.matchWin += 1
+                        response.champPlayed[championId]['win'] += 1
                         winned = True
                     response.wardsKilled += stats['wardsKilled']
                     response.wardsPlaced += stats['wardsPlaced']

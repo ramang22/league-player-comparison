@@ -50,6 +50,8 @@ class Player:
         self.firstBlood = 0
         self.timeCCingOthers = 0
         self.totalDamageTaken = 0
+        self.champPlayed = dict()
+
     def toJSON(self):
         # return json.dumps(self, default=lambda o: o.__dict__, 
         #     sort_keys=False, indent=0)
@@ -74,6 +76,7 @@ class responsePlayer:
         self.kills = Player.kills
         self.deaths = Player.deaths
         self.assists = Player.assists
+        self.champPlayed = Player.champPlayed
         if Player.firstBlood == 0:
             self.firstBloodKP = "0%"
         else:    
