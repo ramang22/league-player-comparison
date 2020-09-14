@@ -33,9 +33,9 @@ class Response extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container shadow">
                 <div className="row">
-                    <div className="col-sm-4 card text-white mb-3 font_shit" style={{backgroundColor:"#49545f", padding:"0"}}>
+                    <div className="col-sm-4 card text-white font_shit" style={{backgroundColor:"#49545f", padding:"0", margin:"0"}}>
                         <PlayerHeader player1={this.props.player1} />
                     </div>
 
@@ -44,11 +44,13 @@ class Response extends Component {
                             <TitleRow name="Game info" color="#F3EBD3"/>
                             <StatRow name="AVG Level" value1={this.props.player1['avgLv']} value2={this.props.player2['avgLv']} />
                             <StatRow name="AVG Game time" value1={this.props.player1['avgGameTime']} value2={this.props.player2['avgGameTime']} />
+                            <hr/>
                             <TitleRow name="CS Diff" color="#F3EBD3"/>
                             <StatRow name="0-10min" value1={this.props.player1['csDiff_0_10']} value2={this.props.player2['csDiff_0_10']} />
                             <StatRow name="10-20min" value1={this.props.player1['csDiff_10_20']} value2={this.props.player2['csDiff_10_20']} />
                             <StatRow name="20-30min" value1={this.props.player1['csDiff_20_30']} value2={this.props.player2['csDiff_20_30']} />
                             <StatRow name="30-Endgame" value1={this.props.player1['csDiff_30_end']} value2={this.props.player2['csDiff_30_end']} />
+                            <hr/>
                             <TitleRow name="Farm" color="#F3EBD3"/>
                             <StatRow name="CS/min" value1={this.props.player1['cs_perMinute']} value2={this.props.player2['cs_perMinute']} />
                             <StatRow name="CS/game" value1={this.props.player1['cs_perGame']} value2={this.props.player2['cs_perGame']} />
@@ -57,6 +59,7 @@ class Response extends Component {
                             <StatRow name="10-20min" value1={this.props.player1['farm_10_20']} value2={this.props.player2['farm_10_20']} />
                             <StatRow name="20-30min" value1={this.props.player1['farm_20_30']} value2={this.props.player2['farm_20_30']} />
                             <StatRow name="30-endgame" value1={this.props.player1['farm_30_end']} value2={this.props.player2['farm_30_end']} />
+                            <hr/>
                             <TitleRow name="Damage" color="#F3EBD3"/>
                             <StatRow name="To champs/game" value1={this.props.player1['totalDamageDealtToChampions_perGame']} value2={this.props.player2['totalDamageDealtToChampions_perGame']} />
                             <StatRow name="To champs/min" value1={this.props.player1['totalDamageDealtToChampions_perMinute']} value2={this.props.player2['totalDamageDealtToChampions_perMinute']} />
@@ -69,6 +72,7 @@ class Response extends Component {
                             <hr/>
                             <StatRow name="Tanked/game" value1={this.props.player1['totalDamageTaken_perGame']} value2={this.props.player2['totalDamageTaken_perGame']} />
                             <StatRow name="Tanked/minute" value1={this.props.player1['totalDamageTaken_perMinute']} value2={this.props.player2['totalDamageTaken_perMinute']} />
+                            <hr/>
                             <TitleRow name="Vision" color="#F3EBD3"/>
                             <StatRow name="Score/game" value1={this.props.player1['visionScore_perGame']} value2={this.props.player2['visionScore_perGame']} />
                             <StatRow name="Vision wards/game" value1={this.props.player1['visionWardsBoughtInGame']} value2={this.props.player2['visionWardsBoughtInGame']} />
@@ -78,7 +82,7 @@ class Response extends Component {
                         </div>
                     </div>
 
-                    <div className="col-sm-4 card text-white mb-3 font_shit" style={{backgroundColor:"#49545f", padding:"0"}}>
+                    <div className="col-sm-4 card text-white font_shit" style={{backgroundColor:"#49545f", padding:"0"}}>
                         <PlayerHeader player1={this.props.player2} />
                     </div>
                 </div>

@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import App from './App';
 import { PieChart } from 'react-minimal-pie-chart';
 import BarChart from 'react-bar-chart';
-import { ResponsiveRadar, ResponsiveBar } from '@nivo/radar'
+import { ResponsiveRadar} from '@nivo/radar'
+import { ResponsiveBar } from '@nivo/bar'
 import StatRow from "./StatRow";
 import TitleRow from "./TitleRow";
+import logo from './Logo.png';
+
 
 const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 class Response extends Component {
 
     constructor(props) {
         super(props);
+        let champsPlayed = [];
+        Object.keys(props.player1['champPlayed']).forEach(function(key) {
+            champsPlayed.push({
+                        "champion": props.player1['champPlayed'][key]['champName'],
+                        "win": props.player1['champPlayed'][key]['win'],
+                        "winColor": "#72B982",
+                        "loss": props.player1['champPlayed'][key]['played'] - props.player1['champPlayed'][key]['win'],
+                        "lossColor": "#BD3C28",
+            })
+        });
         this.state = {
             pieData:
                 [
@@ -58,6 +70,8 @@ class Response extends Component {
                     },
 
                 ],
+                champData:
+                    champsPlayed,
             winRate: 100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['wins'],
             looseRate: 100 / (this.props.player1['wins'] + this.props.player1['losses']) * this.props.player1['losses']
         }
@@ -83,6 +97,15 @@ class Response extends Component {
         return url
 
     }
+    
+    Image(){
+        let size = 24;
+          return <image
+              xlinkHref={logo}
+              height={size}
+              width={size}
+            />;           
+      }
     render() {
         const mystyle = {
             "maxHeight": 170,
@@ -197,50 +220,17 @@ class Response extends Component {
                     />
 
                 </div>
+                <hr />
                 <TitleRow name="Champion play" color="#F3EBD3" />
                 <div className="row d-flex justify-content-center" style={{ width: "350px", height: "200px" }}>
                     <ResponsiveBar
-                        data={data}
-                        keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
-                        indexBy="country"
-                        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+                        data={this.state.champData}
+                        keys={['win', 'loss']}
+                        indexBy="champion"
+                        margin={{ top: 0, right: 50, bottom: 54, left: 100 }}
                         padding={0.7}
                         layout="horizontal"
-                        colors={{ scheme: 'nivo' }}
-                        defs={[
-                            {
-                                id: 'dots',
-                                type: 'patternDots',
-                                background: 'inherit',
-                                color: '#38bcb2',
-                                size: 4,
-                                padding: 1,
-                                stagger: true
-                            },
-                            {
-                                id: 'lines',
-                                type: 'patternLines',
-                                background: 'inherit',
-                                color: '#eed312',
-                                rotation: -45,
-                                lineWidth: 6,
-                                spacing: 10
-                            }
-                        ]}
-                        fill={[
-                            {
-                                match: {
-                                    id: 'fries'
-                                },
-                                id: 'dots'
-                            },
-                            {
-                                match: {
-                                    id: 'sandwich'
-                                },
-                                id: 'lines'
-                            }
-                        ]}
+                        colors={["#72B982", "#BD3C28"]}
                         borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
                         axisTop={null}
                         axisRight={null}
@@ -248,7 +238,7 @@ class Response extends Component {
                             tickSize: 5,
                             tickPadding: 5,
                             tickRotation: 0,
-                            legend: 'country',
+                            legend: '',
                             legendPosition: 'middle',
                             legendOffset: 32
                         }}
@@ -256,39 +246,29 @@ class Response extends Component {
                             tickSize: 5,
                             tickPadding: 5,
                             tickRotation: 0,
-                            legend: 'food',
+                            legend: '',
                             legendPosition: 'middle',
                             legendOffset: -40
                         }}
                         enableGridY={false}
-                        labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                        legends={[
-                            {
-                                dataFrom: 'keys',
-                                anchor: 'right',
-                                direction: 'column',
-                                justify: false,
-                                translateX: 120,
-                                translateY: 0,
-                                itemsSpacing: 2,
-                                itemWidth: 100,
-                                itemHeight: 25,
-                                itemDirection: 'left-to-right',
-                                itemOpacity: 0.85,
-                                symbolSize: 20,
-                                effects: [
-                                    {
-                                        on: 'hover',
-                                        style: {
-                                            itemOpacity: 1
-                                        }
-                                    }
-                                ]
-                            }
-                        ]}
+                        labelTextColor={["white"]}
                         animate={true}
                         motionStiffness={90}
                         motionDamping={15}
+                        theme={{
+                            dots: {
+                                text: {
+                                    fill: "#879893"
+                                }
+                            },
+                            axis: {
+                                ticks: {
+                                    text: {
+                                        fill: '#E7F6E7'
+                                    }
+                                },
+                            },
+                        }}
                     />
                 </div>
             </div>

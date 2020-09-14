@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './Logo.png';
+import newLogo from './newLogo.png';
 import './App.css';
 import axios from 'axios';
 import Response from './Response';
@@ -124,7 +125,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header" style={{fontFamily:"Cinzel Decorative", padding: "0"}}>
-          <div class="container float-md-left" style={{width: "60%"}}>
+          <div class="container float-md-left" style={{width: "80%"}}>
             <div class="row">
               App is in DEV mode. 
             </div>
@@ -135,8 +136,8 @@ class App extends Component {
               Ked to dojebes, tak ti to neopravim. 
             </div>
           </div>
-          <div className="container float-md-right" style={{width: "40%", height:"100%"}}>
-            <img src={logo} style={{height: "100%", width: "265"}}></img>
+          <div className="container float-md-right" style={{width: "20%", height:"100%"}}>
+            <img src={newLogo} style={{height: "100%", width: "265"}}></img>
           </div>
           </div>
 
