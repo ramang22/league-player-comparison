@@ -222,7 +222,7 @@ class Response extends Component {
                 </div>
                 <hr />
                 <TitleRow name="Champion play" color="#F3EBD3" />
-                <div className="row d-flex justify-content-center" style={{ width: "350px", height: "200px" }}>
+                <div className="row d-flex justify-content-center" style={{ width: "350px", height: "300px", margin: "0" }}>
                     <ResponsiveBar
                         data={this.state.champData}
                         keys={['win', 'loss']}
@@ -268,6 +268,14 @@ class Response extends Component {
                                     }
                                 },
                             },
+                            tooltip: {
+                                container: {
+                                    background: '#2d374d',
+                                    color: 'inherit',
+                                    boxShadow: '0 3px 9px rgba(0, 0, 0, 0.5)',
+                                    fontFamily: "monospace"
+                                }
+                            }
                         }}
                     />
                 </div>
